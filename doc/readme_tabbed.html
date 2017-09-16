@@ -1,0 +1,686 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Tabbed Product Pro - Zen-Cart 1.5.x Contrib</title>
+<meta http-equiv="content-type" content="">
+<link href="res/stylesheet_tabbed_readme.css" type="text/css" rel="stylesheet">
+<script src="res/jscript_tpp.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h2>Tabbed Products Pro v1.20</h2>
+<div id="slidetabsmenu" style="display: none;">
+  <ul>
+    <li> <a onClick="expandcontent('sc1', this)" href="javascript:void(0)"><span>Title</span></a> </li>
+    <li> <a onClick="expandcontent('sc2', this)" href="javascript:void(0)"><span>About</span></a> </li>
+    <li> <a onClick="expandcontent('sc3', this)" href="javascript:void(0)"><span>Installation</span></a> </li>
+    <li> <a onClick="expandcontent('sc4', this)" href="javascript:void(0)"><span>How to Use</span></a> </li>
+    <li> <a onClick="expandcontent('sc5', this)" href="javascript:void(0)"><span>Notes &amp; Demos</span></a> </li>
+    <li> <a onClick="expandcontent('sc6', this)" href="javascript:void(0)"><span>History</span></a> </li>
+  </ul>
+</div>
+<br style="clear: both;">
+<div id="tabcontentcontainer">
+<div class="tabcontent" id="sc1" style="display: block;">
+  <p><strong>Version:&nbsp;</strong> v1.0 (Released October 10, 2013)</strong><br>
+    <strong>Original Author:</strong> QHome (<a href="mailto:qhomezone@gmail.com">qhomezone@gmail.com</a>)<br>
+    <strong>Updated for ZC 1.5.5 (1/2/16) By:</strong> stellarweb (<a href="http://zencart-ecommerce-website-design.com">http://zencart-ecommerce-website-design.com</a>) <br>
+    <strong>Updated By:</strong> C Jones (<a href="http://overthehillweb.com">http://overthehillweb.com</a>)<br>
+    <strong>Designed for:</strong> Zen Cart v1.5.x Release<br>
+    <strong>Tabs based on:</strong> DynamicDrive tabs<br>
+    <strong>License:</strong> under the GPL<br>
+    <strong>Support:</strong> Given via the <a href="http://www.zen-cart.com/forum">Zen-Cart Forums</a></p>
+<p>Enjoy!</p>
+<div style="padding-top:250px;"></div>
+
+</div>
+<!--end sc1-->
+<div class="tabcontent" id="sc2" style="display: block;">
+  
+  <h3><u>What Does This Contrib Do?</u></h3>
+  <p>Tabbed Products Pro, or 'TPP',  is the successor to the original 'Tabbed Product Lite' contrib.
+    TPP allows you to change the look of your product info screen to use a tabbed display using 
+    DHTML &amp; Javascript for a cleaner, more organized look. Since the "Lite" version, TPP has been completely rewritten
+    to be more optimized, and to be easily implemented &amp; customized.  </p>
+  <p>By default the following global tabs related to the  informational aspects of the product page are activated:</p>
+  <ul>
+    <li>Product Description</li>
+    <li>Product Details</li>
+    <li>Additional Images</li>
+    <li>Customer Also Purchased</li>
+    <li>Product Reviews</li>
+  </ul>
+  <p>These additional global tabs (mostly related to the transactional aspects of the product page -- attributes, add-to-cart,  upsell) are also supported:</p>
+  <ul>
+    <li>Main Product Image</li>
+    <li>Add to Cart</li>
+    <li>Attributes</li>
+    <li>Add to Cart ON the Attributes tab</li>
+    <li>Cross Sell (if the <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1364" target="_blank">Cross Sell Plus Advanced Sell Combo</a></strong> is installed)</li>
+  </ul>
+  <p>Tabbed Products Pro does not alter any actual values in your store. 
+  It relies on javascript to manipulate the look of the page on your customers browser, while still keeping all 
+  of the source code intact for SEO, and w3 validation. </p>
+<p><strong>Tabs are created dynamically on the display page based on tags entered
+  right in the main product description, or by global options from
+  the admin area.</strong> </p>
+  <p>See the "How To Use" tab for details on how to use it. Since the original 'Tabbed Product Lite' contrib, Tabbed Products Pro has become extremely advanced in logic, and there are
+    many different customizations that can be accomplished with Tabbed Products Pro. </p>
+</div>
+<!--end sc2-->
+<div class="tabcontent" id="sc3" style="display: block;">
+  
+
+  <h3><u>Installation</u></h3>
+  <p>All files are arranged in the correct Zen Cart v1.5.x structure.</p>
+  <ol>
+    <li>Rename the <strong>YOUR_TEMPLATE</strong> and <strong>YOUR_ADMIN</strong> folders to the template folder and admin folder names you are using</li>
+    <li>Login to your store's admin</li>
+    <li>Upload the files to your store. Now here's the best part of the install: <strong>NO MORE RUNNING EXTERNAL SQL SCRIPTS TO INSTALL TABBED PRODUCTS PRO</strong>!!! Whoo hoo!!!</li>
+    <li>To finish the installation of Tabbed Products Pro, click any link in the admin to run the auto-installer (which runs the SQL script for you).</li>
+  </ol>
+<p>If you have properly renamed the admin and template folders, logged into your store, and uploaded the files to the correct location you will see the confirmation messages that the install is successful.</p>
+
+<p>To repeat the installation for any reason, login to your store's admin area, re-upload the <em><strong>YOUR_ADMIN/includes/auto_loaders</strong></em> &amp; <em><strong>YOUR_ADMIN/includes/init_includes</strong></em> folders, then click any link to trigger the installer.</p>
+
+<!--Begin Installation Table-->
+<table border="1" cellpadding="2" cellspacing="2">
+      <tr>
+        <td><strong>Files to Overwrite:</strong></td>
+        <td>None, unless you already have a custom product display template file. If you already
+          have modifications to your display file, you will have to merge the changes together.
+          There are only 3 snippets of code that need to be added to your template to make it work with TPP</td>
+      </tr>
+      <tr>
+        <td><strong>File Modifications:</strong></td>
+        <td>Only if you need to merge your template file</td>
+      </tr>
+      <tr>
+        <td><strong>Database Modifications:</strong></td>
+        <td>Run the included uninstall sql file to remove the Configuration Options for TPP. <br>
+          <span style="font-weight: bold;">(Admin-&gt;Tools-&gt;Install SQL Patches)</span>. <br>
+          <br>
+          The install sql is part of the auto-installer.</td>
+      </tr>
+      <tr>
+        <td><strong>Files to upload:</strong></td>
+        <td><p>IMPORTANT!!! Rename the YOUR_ADMIN folders to match the name of your admin folder. In the includes/template folder, change YOUR_TEMPLATE to the name of the template you are using. (It is not recommended that you overwrite the files in the template_default folder) The rest of the file structure is in tact, so you could rename the YOUR_TEMPLATE folder locally and upload the entire structure.
+          </p>
+          <p>/includes/templates/YOUR_TEMPLATE/css/document_general_info.css<br>
+            /includes/templates/YOUR_TEMPLATE/css/document_product_info.css<br>
+            /includes/templates/YOUR_TEMPLATE/css/product_free_shipping_info.css<br>
+            /includes/templates/YOUR_TEMPLATE/css/product_info.css<br>
+            /includes/templates/YOUR_TEMPLATE/css/product_music_info.css<br>
+            /includes/templates/YOUR_TEMPLATE/css/tpp/*.css (Multiple files)<br>
+            /includes/templates/YOUR_TEMPLATE/images/*.gif (Multiple files)<br>
+            /includes/templates/YOUR_TEMPLATE/templates/tpl_document_general_info_display.php<br>
+            /includes/templates/YOUR_TEMPLATE/templates/tpl_document_product_info_display.php<br>
+            /includes/templates/YOUR_TEMPLATE/templates/tpl_product_free_shipping_info_display.php<br>
+            /includes/templates/YOUR_TEMPLATE/templates/tpl_product_info_display.php<br>
+            /includes/templates/YOUR_TEMPLATE/templates/tpl_product_music_info_display.php<br>
+            /includes/modules/tabbed_products_pro.php<br>
+            /includes/modules/pages/document_general_info/jscript_tpp.js<br>
+            /includes/modules/pages/document_product_info/jscript_tpp.js<br>
+            /includes/modules/pages/product_free_shipping_info/jscript_tpp.js<br>
+            /includes/modules/pages/product_info/jscript_tpp.js<br>
+            /includes/modules/pages/product_music_info/jscript_tpp.js<br>
+            /includes/languages/english/extra_definitions/tabbed_products_pro.phpincludes/languages/english/html_includes/YOUR_TEMPLATE/define_product_info_custom_tab_1.php<br>
+            includes/languages/english/html_includes/YOUR_TEMPLATE/define_product_info_custom_tab_2.php<br>
+            includes/languages/english/html_includes/YOUR_TEMPLATE/define_product_info_custom_tab_2.php</p>
+<p>Deleted from TPP (remove these files in their entirety or <strong>YOU WILL GET ERRORS)</strong>:</p>
+          <ul>
+            <li> /includes/templates/YOUR_TEMPLATE/css/stylesheet_tpp.css</li>
+            <li> /includes/templates/YOUR_TEMPLATE/jscript/jscript_tpp.js</li>
+            <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_product_reviews_default.php</li>
+          </ul>
+          <p>&nbsp;</p></td>
+      </tr>
+      <tr>
+        <td><strong>Modifying other product type  templates:</strong></td>
+        <td>The five default product types are supported. To modify templates for other product types, there are only 3 minor code snippets to add.<br><br>
+          In the product info display template:<br>
+		  <ol>
+          <li>This tells the product page to load the TPP module file:<br>
+          <strong>FIND:</strong><br>
+          &lt;div class="centerColumn" id="productGeneral"&gt;<br><br>
+          <strong>ABOVE THAT, ADD:</strong><br>          
+          &lt;?php<br>
+          //BOF :: Tabbed Products Pro ::<br>
+          require(DIR_WS_MODULES . 'tabbed_products_pro.php');<br>
+          //EOF :: Tabbed Products Pro ::<br>
+          ?&gt;</li>
+          <li>This is the location on the page where the tab block is going to be. This can be moved to other locations on the page if so desired.<br>
+          <strong>FIND:</strong><br>
+		  &lt;!--eof free ship icon&nbsp; --&gt;<br><br>
+          <strong>BELOW THAT,&nbsp; ADD:</strong><br>
+          &lt;?php <br>
+            //BOF :: Tabbed Products Pro ::<br>
+            echo '&lt;div id="tpptabBlock" style="display:none;"&gt;' . $tabData . '&lt;/div&gt;';<br>
+            //EOF :: Tabbed Products Pro ::<br>
+            ?&gt;</li>
+          <li>This loads the final javascript to hide the non-tabbed blocks if they are already on tabs. So you don't end up with duplicate blocks.<br>
+          <strong>GOTO:</strong> Bottom of the file<br><br>
+          <strong>ADD:</strong><br>
+          &lt;?php <br>
+            //BOF :: Tabbed Products Pro ::<br>
+            echo $tabjscript;<br>
+            //BOF :: Tabbed Products Pro ::<br>
+            ?&gt;</li>
+		</ol>
+          <p>THAT'S IT! Now your products page should be tabbed! </p>
+          <p>You will need a corresponding CSS and JS file for your product type. Using the default product info CSS and JSS, they should be something like this:</p>
+          <ul>
+            <li>/includes/templates/YOUR_TEMPLATE/css/YOUR_PRODUCT_TYPE.css</li>
+            <li>/includes/modules/pages/YOUR_PRODUCT_TYPE/jscript_tpp.js</li>
+        </ul>          </td>
+      </tr>
+  </table>
+<!--End Installation Table-->
+
+
+
+<h3><u>Upgrading From Previous Versions to v1.20</u></h3>
+<p>It has been implied that the bundling of the CSS/JS Loader with prior versions of Tabbed Products Pro   was necessary to prevent the  Tabbed Product Pro javascripts and stylesheets from  loading on ALL pages (ie: limiting them to only load when accessing the product information page).</p>
+<p>The CSS/JS Loader add-on actually serves a different purpose, and was never "required" by Tabbed Products Pro at all. CSS/JS Loader should have been submitted as a mod in its own right rather than being included as an addendum to Tabbed Products Pro.</p> 
+<p>Zen Cart does have built in functionality to load the TPP stylesheets and javascripts only when the product information page is accessed. As of v1.09a of Tabbed Products Pro, changes were made to support this. Upgrading to v1.09a or greater of Tabbed Products Pro will implement the proper structure so that stylesheets and javascripts will now only load when accessing the product information pages.</p>
+<p>In support of these changes, the following files have been deleted from the Tabbed Products Pro installer fileset, and should be removed from your store in their entirety. <strong>DO NOT KEEP BACKUPS OF THESE FILES ON YOUR WEB SERVER</strong>. Doing so will cause Zen Cart to load the TPP javascripts and stylesheets TWICE when the product information page is accessed.</p>
+          <ul>
+            <li>/includes/templates/YOUR_TEMPLATE/css/stylesheet_tpp.css</li>
+            <li> /includes/templates/YOUR_TEMPLATE/jscript/jscript_tpp.js</li>
+          </ul>
+<p>The issue of the &quot;double&quot; reviews buttoms has been properly fixed. to support this the following files has been deleted from the installer fileset, and should be removed from your store in their entirety. <strong>DO NOT KEEP BACKUPS OF THESE FILES ON YOUR WEB SERVER</strong>.</p>
+<ul>
+  <li>/includes/templates/YOUR_TEMPLATE/templates/tpl_product_reviews_default.php</li>
+</ul>
+<p>To upgrade from prior versions of Tabbed Products Pro to v1.20 you do not need to do anything more than to login to your shop's admin, upload the changed files, delete the obsolete ones, re-upload the <em><strong>YOUR_ADMIN/includes/auto_loaders</strong></em> &amp; <em><strong>YOUR_ADMIN/includes/init_includes</strong></em> folders, then click any admin link to trigger the installer.</p>
+<h3><u>Upgrading from v1.06, v1.07 or  v 1.08 to v1.20</u></h3>
+<p>You will need to remove all previous versions of CSS/JS Loader files before installing TPP v1.20. (If you do indeed want to use the the CSS/JS Loader, you should consider downloading the latest version from the current author's site and install it separately from TPP)</p>
+
+<h3><u>Un-Install Tabbed Products Pro</u></h3>
+<p>To uninstall TPP, run the <strong>uninstall.sql</strong> file and remove all the TPP files from your site.</p>
+</div>
+<!--end sc3-->
+<div class="tabcontent" id="sc4" style="display: block;">
+  
+  <p><font color="#ff0000"><font color="#000000"><font color="#000000" size="4"><strong><u>The Basics</u></strong></font></font></font></p>
+  <ol>
+    <li><font color="#ff0000"><font color="#ff0000"><font color="#000000">Global tabs are controlled and managed in the <span style="color: rgb(255, 102, 0);">Admin-&gt;Configuration-&gt;TPP Config</span> configuration menu.</font></font></font></li>
+    <li><font color="#ff0000"><font color="#000000">Custom tabs are created dynamically
+      from the use of tags in the product description. </font></font></li>
+    <li>To change the color/appearance of the tabs, there are  39 different tab stylesheets included including 1 CSS3 (imageless) tab stylesheet, and one verticle tab stylesheet. To select a tab style open the stylesheet for the product type (default product type is /includes/templates/YOUR_TEMPLATE/css/product_info.css) and add the following line:<br>
+      @import &quot;tpp/<strong><span style="color: rgb(255, 102, 0);">[replace with the selected stylesheet]</span></strong>&quot;;<br>
+      <br>
+      So it would look something like this: <span style="color: rgb(255, 102, 0);">@import &quot;<strong>tpp/alt_tpp_tabs13.css</strong>&quot;;</span><br>
+<br>
+      All changes to the appearance of the tabs should be made in the stylesheets.</li>
+    <li>To use the Define Page global tabs, activate in them (see step 1), then simply add your content to the tab by editing the corresponding Define Page.</li>
+    <li>To change the tab names, edit them in the <strong>includes/languages/english/extra_definitions/tabbed_products_pro.php</strong> file.  </li>
+  </ol>
+  <h3><u>Cross Sell Modules and TPP</u></h3>
+  <p>Reference: http://www.zen-cart.com/showthread.php?86201-Tabbed-Products-Pro-(TPP)-Contrib-Official-Thread&amp;p=1221922#post1221922</p>
+  <p><u>First a bit on the current suite of Cross Sell Modules actively available:</u><br>
+    <br>
+    <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1364" target="_blank">1. Cross Sell Plus Advanced Sell Combo</a></strong></p>
+  <div>This appears to be a hybrid of these two older cross sell mods:</div>
+  <br>
+  <ul>
+    <li><em>Cross Sell</em> - <a href="http://www.zen-cart.com/downloads.php?do=file&id=2" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=2</a> <br>
+    </li>
+    <li><em>Cross Sell Advanced</em> - <a href="http://www.zen-cart.com/downloads.php?do=file&id=400" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=400</a></li>
+  </ul>
+  <br>
+  <div>This module is the one which works with TPP by default. No additional modifications are required. Simply turn on the Cross Sell tabs and the Cross Sell centerbox will appear inside the cross sell tab.</div>
+  <br>
+  <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1215" target="_blank">2. Ultimate Cross Sell for Zen Cart</a></strong>
+  <div>There are instructions for integrating <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1215" target="_blank">Ultimate Cross Sell for Zen Cart</a></strong> with TPP.. I posted a possible update to those instructions <a href="http://www.zen-cart.com/showthread.php?86201-Tabbed-Products-Pro-%28TPP%29-Contrib-Official-Thread&p=1221920#post1221920" target="_blank">here</a>. The original instructions are included with this update.</div>
+  <br>
+  <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1128" target="_blank">3. Multi Cross Sell</a></strong>
+  <div>This is an enhanced version of this cross sell mod:</div>
+  <br>
+  <ul>
+    <li><em>Cross Sell - Just Another Cross Sell Mod</em> - <a href="http://www.zen-cart.com/downloads.php?do=file&id=477" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=477</a></li>
+  </ul>
+  <br>
+  <div> <em>Cross Sell - Just Another Cross Sell Mod</em> also appears to be a hybrid of these two older cross sell mods:</div>
+  <br>
+  <ul>
+    <li><em>Cross Sell</em> - <a href="http://www.zen-cart.com/downloads.php?do=file&id=2" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=2</a> <br>
+    </li>
+    <li><em>Cross Sell Advanced</em> - <a href="http://www.zen-cart.com/downloads.php?do=file&id=400" target="_blank">http://www.zen-cart.com/downloads.php?do=file&amp;id=400</a></li>
+  </ul>
+  <br>
+  <div>After downloading and examining  <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1128" target="_blank">Multi Cross Sell</a></strong>, it appears highly likely that if one were to use the <a href="http://www.zen-cart.com/showthread.php?86201-Tabbed-Products-Pro-%28TPP%29-Contrib-Official-Thread&p=1221920#post1221920" target="_blank">instructions for integrating</a> <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1215" target="_blank">Ultimate Cross Sell for Zen Cart</a></strong> with TPP as a guideline, that <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1128" target="_blank">Multi Cross Sell</a></strong> could also be integrated with TPP. I have no plans to test this, but hope   that if someone in the community successfully integrates <strong><a href="http://www.zen-cart.com/downloads.php?do=file&id=1128" target="_blank">Multi Cross Sell</a></strong> with TPP that they will share the details of their solution, and  I will update the readme with those instructions if they share them.</div>
+<h3><u>Custom Tab Tags</u></h3>
+  <p><font color="#ff0000"><font color="#000000">There are 4 types of custom tab tags:</font></font> <br>
+    <font color="#ff0000"><font color="#000000"><span style="font-weight: bold; color: rgb(255, 0, 0);">YOU
+      MUST <span style="text-decoration: underline;">NOT</span> USE A WYSIWYG EDITOR SUCH
+      AS FCKEDITOR OR HTMLAREA.</span> <br style="font-weight: bold; color: rgb(255, 0, 0);">
+      <span style="font-weight: bold; color: rgb(255, 0, 0);">THE TAB TAGS MUST BE ENTERED IN SOURCE
+        CODE MODE.</span></font></font>  </p>
+  <table border="1" cellpadding="2" cellspacing="2">
+    <tbody>
+      <tr>
+        <td style="text-align: center; width: 25%;"><font color="#ff0000"><font color="#000000"><strong>&lt;!--%&nbsp;%--&gt;&nbsp;</strong></font></font></td>
+        <td><font color="#ff0000"><font color="#000000"><font color="#000000"><u><b>Custom
+          Tags</b></u></font></font></font> <br>
+         <font color="#ff0000"><font color="#000000"> <br>
+          These are used in the product description area for creating custom tabs with your
+          own text on the tab. The tab text comes from the text in between the delimiters.<br>
+          <br>
+          Example:<br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--%Product Description%--&gt;</span> <br>
+          The name of this tab is "Product Description". This is the text on the product description
+          tab. <br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--%Custom Information%--&gt;</span> <br>
+          This is where the next tab is created. All text from below this tag goes on the "Custom
+          Information" tab.<br>
+          <br>
+          <span style="font-weight: bold;">All text before the first tag will be above the tabs.</span></font></font></td>
+      </tr>
+      <tr>
+        <td style="width: 10%; text-align: center;"><font color="#ff0000"><font color="#000000"><strong>&lt;!--#&nbsp; #--&gt;</strong></font></font></td>
+        <td><font color="#ff0000"><font color="#000000"><font color="#000000"><u><b>Zen
+          Tags<br>
+          <br>
+          </b></u></font></font><font color="#000000">These
+          tags are for the "built-in" modules that Zen Cart comes with. Things like Additional
+          Images, Customers Also Purchased, etc. You can also add 3rd party tags the same way.
+          I've included the Cross-Sell code as an option to be enabled if you have the contrib
+          already installed.<br>
+          </font></font>
+          <p> <font color="#ff0000"><font color="#000000"><font color="#000000">I have created
+            multiple Zen Tags that when placed in the description, will add additional
+            seperate tabs based on modules such as "Additional Images", and "Customers Also Purchased",
+            and "Cross Sell". To use them, simply add these tags to your product description:</font></font></font> </p>
+          <p> 
+          <font color="#ff0000"><font color="#000000"><font color="#000000">
+          <table style="width: 100%;" colspan="2" border="0" cellpadding="2" cellspacing="2">
+            <tbody>
+              <tr>
+                <td><font color="#ff0000"><font color="#000000"><font color="#000000"><code>&lt;!--#MainImageOnTab#--&gt;</code></font></font></font></td>
+                <td><font color="#ff0000"><font color="#000000"><font color="#000000">Use this tag to add Main Image to the first (product description) tab</font></font></font></td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#AttributeOptions#--&gt;</code></td>
+                <td style="width: 354px;">Use this tag to create a tab for keeping Attribs on their own tab.</td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#DetailsOnTab#--&gt;</code></td>
+                <td style="width: 354px;">Use this tag to create a tab for putting the product details (weight, model #, etc) on its own  own
+                  tab.</td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#AddToCart#--&gt;</code></td>
+                <td style="width: 354px;">This puts the 'Add to Cart', and 'Quantity Discounts' inside its own tab</td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><font color="#ff0000"><font color="#000000"><font color="#000000"><code>&lt;!--#AdditionalImages#--&gt;</code></font></font></font></td>
+                <td style="width: 354px;">Use this tag to create a tab for additional images. This is based on ZC's design </td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#CustomersAlsoPurchased#--&gt;</code></td>
+                <td style="width: 354px;">Use this tag to create a tab for the Customers Also Purchased module. This is based on ZC's design </td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#CrossSell#--&gt;</code></td>
+                <td style="width: 354px;">Use this tag to create a tab for the Cross Sell module. <br>
+                 <span style="font-weight: bold; color: rgb(255, 0, 0);">DO NOT ENABLE CROSS SELL
+                  IF YOU DO NOT HAVE THE CROSS SELL CONTRIB INSTALLED OR THE PAGE WILL NOT LOAD AND SHOW ERROR!!!</span> <br>
+                </td>
+              </tr>
+              <tr>
+                <td style="width: 242px;"><code>&lt;!--#Reviews#--&gt;</code></td>
+                <td style="width: 354px;">Use this tag to create a tab for the reviews module. This is based on ZC's design </td>
+              </tr>
+            </tbody>
+          </table>
+          </font></font></font>
+          </p>
+          <p><font color="#ff0000"><font color="#000000">Example:<br>
+            <span style="color: rgb(51, 0, 153);">&lt;!--%Product Description%--&gt;</span> <br>
+            The name of this tab is "Product Description". This is the text on the product description
+            tab. <br>
+            <span style="color: rgb(51, 0, 153);">&lt;!--%Custom Information%--&gt;</span> <br>
+            This is where the next tab is created. All text from below this tag goes on the "Custom
+            Information" tab.</font></font><font color="#ff0000"><font color="#000000"> &nbsp;The
+            next tag shows that another "zen cart" tab will be created from the Customers Also
+            Purchased module. This will force the module to appear on a tab instead of at the
+            bottom of the page.<br>
+            <span style="color: rgb(51, 0, 153);">&lt;!--#CustomersAlsoPurchased#--&gt;</span></font></font> </p></td>
+      </tr>
+      <tr>
+        <td style="width: 10%; text-align: center;"><font color="#ff0000"><font color="#000000"><strong>&lt;!--@EndTabs@--&gt;</strong></font></font></td>
+        <td><font color="#ff0000"><font color="#000000"><font color="#000000"><u><b>Stop
+          Tags</b></u></font></font></font> <br>
+         <font color="#ff0000"><font color="#000000"> <br>
+          This tag&nbsp;tells the code to stop doing the tab parsing. <span style="font-weight: bold;">All
+          text after this tag will be below the tabs.</span></font></font></td>
+      </tr>
+      <tr>
+        <td style="width: 10%; text-align: center;"><font color="#ff0000"><font color="#000000"><strong>&lt;!--*&nbsp;&nbsp;&nbsp;
+          *--&gt;</strong></font></font></td>
+        <td><font color="#ff0000"><font color="#000000"><font color="#000000"><u><b>Sub&nbsp;Tags<br>
+          <br>
+          </b></u></font></font><font color="#000000">These
+          tags are for telling the code to use sub_ tags to put multiple modules onto one tab.
+          The tab you want the object on is referenced by the # in the parenthesis (for example, 
+          if you want attributes on the 4th tab, you would use &lt;!--*sub_AttributeOptions(4)*--&gt;). <br>
+          Supported	tags: <br>
+          </font></font>
+          <table style="width: 100%; background-color: rgb(255, 255, 255); text-align: left;" border="0" cellpadding="2" cellspacing="2">
+            <tbody>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_AddToCart(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Add to Cart" button&nbsp;to the tab(s) you reference.</td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_DetailsOnTab(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Product Details" module to the&nbsp;tab(s) you reference.</td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_AttributeOptions(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Attribute Options"&nbsp;to the tab(s) you reference.</td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_AdditionalImages(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Additional Images" module to the&nbsp;tab(s) you reference.</td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_CustomersAlsoPurchased(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Customers Also Purchased" module to the tab(s) you reference.</td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_CrossSell(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Cross Sell" module to the tab(s) you reference.<span style="font-style: italic;">(Only
+                  works if You have Cross Sell contrib installed already and have it enabled in the
+                  config.)</span></td>
+              </tr>
+              <tr>
+                <td style="width: 244px;"><font color="#ff0000"><font color="#000000">&lt;!--*sub_Reviews(#)*--&gt;</font></font></td>
+                <td style="width: 414px;"> This tag will add the "Reviews" module to the&nbsp;tab(s) you reference.</td>
+              </tr>
+            </tbody>
+          </table>
+
+         <font color="#ff0000"><font color="#000000"> <br>
+          <br>
+          </font></font><font color="#ff0000"><font color="#000000">EXAMPLE:<br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--%Product Description%--&gt;</span> <br>
+          This is the stuff on the 1st tab. It also has Add To Cart button on it. (by itself)<br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--*sub_AddToCart(1)*--&gt;</span> <br>
+          <br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--%Custom Tab 2%--&gt;</span> <br>
+          This is the 2nd tab and has Add to cart &amp; Attribute Options on it as noted by
+          the sub tabs below.<br>
+          <span style="color: rgb(51, 0, 153);">&lt;!--*sub_AddToCart(2)*--&gt;</span> <br style="color: rgb(51, 0, 153);">
+          <span style="color: rgb(51, 0, 153);">&lt;!--*sub_AttributeOptions(2)*--&gt;</span></font></font></td>
+      </tr>
+    </tbody>
+</table>
+<br />
+<br />
+
+<h3><u>Adding Additional Global Tabs</u></h3>
+<p>See the &quot;TPP - Adding Global Tabs.doc&quot; document. (in the &quot;docs&quot; folder with this readme document)</p>
+
+
+</div>
+<!--end sc4-->
+<div class="tabcontent" id="sc5" style="display: block;">
+  
+  <h3><u>Notes</u></h3>
+  <p><font color="#ff0000"><font color="#000000">1. First, before you make any custom
+    changes. Try it out. Upload all the files and view your products to see if there are
+    any errors. The default setup should work with any store. Now that you know that it
+    works for you, you can customize some of the preferences in Step 2. If you have any
+    errors on first install, check out the zen-cart forums in the <a href="http://www.zen-cart.com/forum/showthread.php?p=209719">official
+    thread</a></font></font>.</p>
+  <p><font color="#ff0000"><font color="#000000">2. Go to <span style="color: rgb(0, 0, 0);">the&nbsp;Config</span> and
+    change it according to your needs. Try different combinations, and read the details
+    of each setting. Some have extra "smart" code to keep them on the first tab no matter
+    what because it makes better business sense.</font></font> </p>
+  <p><font color="#ff0000"><font color="#000000">3. If you have any of the Globals
+    set to true, keep in mind that this means that ALL products will share these settings
+    but ONLY if that particular product has content for that tab. For example, if you
+    set $bGblAdditionalImages to true, only items that have additional images will actually
+    show the additional images tab.</font></font> </p>
+  <p><font color="#ff0000"><font color="#000000">4. There are many combinations
+    of tabs you can display. If you want ALL items to have the <span style="text-decoration: underline;">Customers
+    Also Purchased</span> on a tab, but only SOME items you would like the <span style="text-decoration: underline;">Additional
+    Images</span> as a tab, you can set the <span style="font-style: italic;">Global Customers
+    Also Purchased</span> configuration to true in the config area, and add the tag for
+    &lt;!--#AdditionalImages#--&gt; to the specific product descriptions.</font></font> </p>
+  <p>5. One question often asked is how to add tabs to other parts of Zen Cart (category descriptions, EZ Pages, other define pages, etc). This module supports adding tabs to the product pages, and NOTHING more *hence the name &quot;Tabbed <strong>PRODUCTS</strong> Pro&quot;). There are no plans to expand the module for site wide tab capabilities. </p>
+  <p>However, if you look at the source HTML code that makes up the TPP readme, you should be able to follow this readme's HTML structure and use it as a guideline for adding tabs to other Zen Cart pages.. If you are not familiar with how to write raw HTML, then I'm afraid there really isn't an easy "plug-n-play" type of answer to this question, and it will not be covered in any detail on the TPP support thread.</p>
+  <p>A good model for how to do this can be found here: http://www.zen-cart.com/showthread.php?86201-Tabbed-Products-Pro-(TPP)-Contrib-Official-Thread&p=1217363#post1217363. The only thing one will need to make this work is to create page specific stylesheets &amp; javascripts. Depending on where you put the tab code, page specific stylesheets and javascript may not be possible. Therefore you may have to include in javascript or stylesheets.</p>
+  <h5>Page-Specific stylesheet's</h5>
+  <ul>
+    <li>page_name.css // changes to one page (use index_home.css for "just the home page")</li>
+    <li>pageXXX.css // changes for a specific numbered EZ-Page, ie: page3.css for ez-page id=3 (applies to v1.5.0 and newer)</li>
+    <li>c_??.css // changes to all info pages in a category</li>
+    <li>m_??.css // changes to a manufacturer's listing page</li>
+  </ul>
+  <h5>Page-Specific jscript's</h5>
+  <ul>
+    <li>For page-specific operation, put the file under the /includes/modules/pages/{pagename}/ folder</li>
+  </ul>
+<h3><u>Create Tabs for your product(s)</u></h3>
+<p><font color="#ff0000"><font color="#000000"><font color="#000000">To create
+  a tabbed view for your items, you simply add the proper
+  tags to the <strong style="font-weight: normal;">product description area when adding
+    or modifying a product from the admin</strong></font></font></font> </p>
+  <p> <font color="#ff0000"><font color="#000000"><font color="#000000"><code>This: &lt;!--%&nbsp;
+    is the opening tag<br>
+    This: %--&gt;</code>&nbsp; is the closing tag<br>
+    Anything in between is the title of the tab.</font></font></font> </p>
+  <p><font color="#ff0000"><font color="#000000"><font color="#000000">Example:</font></font></font> </p>
+  <p> <font color="#ff0000"><font color="#000000"><font color="#000000"><code>This is text
+    above the tabs.<br>
+    &lt;!--%Product Description%--&gt;<br>
+    This is the main product description.<br>
+    &lt;!--%Extra Specs%--&gt;<br>
+    This is where you can add custom stuff as you wish. You can have as many<br>
+    tabs as you want.<br>
+    &lt;!--%BlahBlah%--&gt;</code> <br>
+   This is another tab named BlahBlah</font></font></font> </p>
+  <p><font color="#ff0000"><font color="#000000"><a href="res/admin_example.jpg" target="_blank">(Click
+    for screenshot example)</a></font></font> </p>
+  <p><font color="#ff0000"><font color="#000000"><font color="#000000">So for each
+    tag set, a new tab is created. If you want text to appear above the tabs simply put
+    all the text before the first tab tag and it will appear above. <strong style="font-weight: normal;">If
+    you want to put text below the tabs. Simply add &lt;!--@EndTabs@--&gt; to your Product
+    Description area after all of your tabs. All text after that will be below the tabs.&nbsp;</strong></font></font></font> </p>
+  ========================================================
+  <p>The
+    great thing about this contrib, is that this sets the custom&nbsp;tabs for products
+    on "per product" OR "global" basis. The template code is &quot;smart&quot; enough to tell
+    if you have tab tags or not. If you dont want tabs on a product, then simply don't
+    use the tags or use the IgnoreGlobals tag and it will default to normal zc view.&nbsp; </p>
+</div>
+<!--end sc5-->
+<div class="tabcontent" id="sc6" style="display: block;">
+  
+  <h3><u>History</u></h3>
+    <p>1/2/2015 - v1.20 (Release) - stellarweb</p>
+  <ul>
+    <li>Updated files for Zen 1.5.5</li>
+  </ul>
+  <p>10/10/2013 - v1.10 (Release) - C Jones</p>
+  <ul>
+    <li>Tidy up the TPP module</li>
+    <li>Cleanup and include more info in the readme and Global tabs docs</li>
+    <li>Changes to support the addition of three Define Page backed global tabs</li>
+  </ul>
+  <p>09/13/2013 - v1.09a (Release) - C Jones</p>
+  <ul>
+    <li>Slight change so that the javascript and CSS files only load on the product information pages</li>
+    <li>Add CSS3 stylesheet in the /includes/templates/YOUR_TEMPLATE/css/tpp/*.css folder</li>
+    <li>Improved fix for the issue with the &quot;duplicate&quot; review buttons (incorrectly displayed two &quot;Write Reviews&quot; buttons)</li>
+    <li>Supports the 5 default product types.</li>
+  </ul>
+<p>06/15/2012 - v1.09 (Release) - C Jones</p>
+  <ul>
+    <li>Updated/Improved the auto-installer.</li>
+  </ul>
+  <p>06/15/2012 - v1.08a (Release) - C Jones</p>
+  <ul>
+    <li>Removed all ties/links to CSS/JS Loader.</li>
+  </ul>
+  <p>2-Aug-2008 - v1.05 (Release) - qhome </p>
+  <ul>
+    <li>Added new admin option to merge attributes and add to cart on the same tab.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>TabbedProductsPro.sql</li>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>12-May-2008 - v1.04 (Release) - qhome </p>
+  <ul>
+    <li>Added more conditional logic from the preload section to cut down unnecessary queries</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>25-Mar-2008 - v1.03 (Release) - qhome </p>
+  <ul>
+    <li>Fixed bug where default attribute radio button wasn't checked on tabs.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>jscript/jscript_tpp.js</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>06-Mar-2008 - v1.02 (Release) - qhome </p>
+  <ul>
+    <li>Modified
+      all the tpp/css files to include float:left and width:100% to prevent
+      float drop problems. It's a new method that I am trying so I hope it
+      doesn't break anything else.</li>
+    <li>Updated module file to stop hiding the read review button.<br>
+    </li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>css/tpp/*.css</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>16-Feb-2008 - v1.01 (Release) - qhome </p>
+  <ul>
+    <li>Updated a few buggy CSS tab files (tab22.css was using tab21 images), spacing was off on tab1.</li>
+    <li>Added ability for Cross Sell tab option to auto-detect Cross Sell contrib existence.<br>
+    </li>
+    <li>Updated sql file too remove the "Cross Sell Exists" option since it is automatically found now</li>
+    <li>Added support for hiding headers of modules that have their own headers (e.g. customers also purchased, cross sell)</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>css/tpp/alt_tpp_tabs1.css</li>
+      <li>css/tpp/alt_tpp_tabs21.css</li>
+      <li>css/tpp/alt_tpp_tabs22.css</li>
+      <li>css/tpp/alt_tpp_tabs23.css</li>
+      <li>TabbedProductsPro.sql</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>15-Feb-2008 - v1.0 (Release) - qhome </p>
+  <ul>
+    <li>Restructured &amp; Added nearly 40 different tab styles. All based on an css&nbsp;@import command to change them out easier.</li>
+    <li>Moved some stuff to the css files for better support of CSS Standards.</li>
+    <li>Updated sql file to support MySql 4 &amp; 5 (thanks <span class="bigusername">quentinjs)</span></li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>css/stylesheet_tpp.css</li>
+      <li>TabbedProductsPro.sql</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+    <li>Files Added:</li>
+    <ul>
+      <li>css/tpp/*.css (many&nbsp;files)</li>
+      <li>images/tpp/*.gif (many files)</li>
+    </ul>
+  </ul>
+  <p>07-Feb-2008 - v0.6BETA - qhome </p>
+  <ul>
+    <li>Added Main Image On Tab option to allow ability to put main image on the first tab with Product Description.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>jscript/jscript_tpp.js</li>
+      <li>doc/readme_tabbed.html</li>
+      <li>TabbedProductsPro.sql</li>
+    </ul>
+  </ul>
+  <p>24-Jan-2008 - v0.5BETA - qhome </p>
+  <ul>
+    <li>Fixed product title to stop using the model number as part of the name.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+ 23-Jan-2008 - v0.4BETA - qhome
+  <ul>
+    <li>Fixed minor javascript syntax error in IE.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>22-Jan-2008 - v0.3BETA - qhome </p>
+  <ul>
+    <li>Removed extra ?&gt; tag that was causing some php comments to show on product page</li>
+    <li>Minor
+      change to the Additional Images tab check to use the official
+      additional images module to check instead of a localized version.</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>templates/tpl_product_display_info.php</li>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>21-Jan-2008 - v0.2BETA - qhome </p>
+  <ul>
+    <li>Fixed javascript so that it loads instantly instead of after the page fully loads.</li>
+    <li>Updated readme with instructions to modify custom product info template files</li>
+    <li>Files Modified:</li>
+    <ul>
+      <li>templates/tpl_product_display_info.php</li>
+      <li>jscript/jscript_tpp.js</li>
+      <li>modules/tabbed_products_pro.php</li>
+      <li>doc/readme_tabbed.html</li>
+    </ul>
+  </ul>
+  <p>21-Jan-2008 - v0.1BETA - qhome </p>
+  <ul>
+    <li> Initial Release. Replacing Tabbed Products Lite with new Tabbed Products Pro version </li>
+  </ul>
+</div>
+<!--end sc6-->
+</div>
+<!--end tabcontainer-->
+<script type="text/javascript">document.getElementById('sc2').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc3').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc4').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc5').style.display = 'none';</script>
+<script type="text/javascript">document.getElementById('sc6').style.display = 'none';</script>
+<script type="text/javascript">ShowTabs()</script>
+<script type="text/javascript">
+// We only show the tab links if JavaScript is available/active.
+<!--
+if (document.getElementById("slidetabsmenu") != null) {
+  document.getElementById('slidetabsmenu').style.display = "block";
+}
+//-->
+</script>
+</div>
+</body>
+</html>
