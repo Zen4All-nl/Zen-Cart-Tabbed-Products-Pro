@@ -9,6 +9,7 @@ By default the following global tabs related to the informational aspects of the
   - Additional Images
   - Customer Also Purchased
   - Product Reviews
+  
 These additional global tabs (mostly related to the transactional aspects of the product page -- attributes, add-to-cart, upsell) are also supported:
 
   - Main Product Image
