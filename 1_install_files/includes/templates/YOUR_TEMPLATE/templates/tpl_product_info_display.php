@@ -6,16 +6,15 @@
  * Displays details of a typical product
  *
  * @package templateSystem
- * @copyright Copyright 2003-2014 Zen Cart Development Team
+ * @copyright Copyright 2003-2016 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart.com/license/2_0.txt GNU Public License V2.0
- * @modified for tabbed products pro 01/02/2016 by stellarweb
- * @version $Id:  $
+ * @version $Id: picaflor-azul Sun Dec 13 16:32:43 2015 -0500 New in v1.5.5 $
  */
-?>
 
-<?php 
- //require(DIR_WS_MODULES . '/debug_blocks/product_info_prices.php');
+//require(DIR_WS_MODULES . '/debug_blocks/product_info_prices.php');
+?>
+<?php
 //BOF :: Tabbed Products Pro ::
 require(DIR_WS_MODULES . 'tabbed_products_pro.php');
 //EOF :: Tabbed Products Pro ::
@@ -48,6 +47,12 @@ require($template->get_template_dir('/tpl_products_next_previous.php',DIR_WS_TEM
 <?php } ?>
 <!--eof Prev/Next top position-->
 
+<div id="prod-info-top">
+<!--bof Product Name-->
+<h1 id="productName" class="productGeneral"><?php echo $products_name; ?></h1>
+<!--eof Product Name-->
+
+<div id="pinfo-left" class="group">
 <!--bof Main Product Image -->
 <?php
   if (zen_not_null($products_image)) {
@@ -62,11 +67,38 @@ require($template->get_template_dir('/tpl_products_next_previous.php',DIR_WS_TEM
 ?>
 <!--eof Main Product Image-->
 
-<!--bof Product Name-->
-<h1 id="productName" class="productGeneral"><?php echo $products_name; ?></h1>
-<!--eof Product Name-->
+<!--bof Additional Product Images -->
+<?php
+/**
+ * display the products additional images
+ */
+  require($template->get_template_dir('/tpl_modules_additional_images.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_additional_images.php'); ?>
+<!--eof Additional Product Images -->
+</div>
 
+<div id="pinfo-right" class="group grids">
 <!--bof Product Price block -->
+<!--bof Product details list  -->
+<?php if ( (($flag_show_product_info_model == 1 and $products_model != '') or ($flag_show_product_info_weight == 1 and $products_weight !=0) or ($flag_show_product_info_quantity == 1) or ($flag_show_product_info_manufacturer == 1 and !empty($manufacturers_name))) ) { ?>
+<ul id="productDetailsList">
+  <?php echo (($flag_show_product_info_model == 1 and $products_model !='') ? '<li>' . TEXT_PRODUCT_MODEL . $products_model . '</li>' : '') . "\n"; ?>
+  <?php echo (($flag_show_product_info_weight == 1 and $products_weight !=0) ? '<li>' . TEXT_PRODUCT_WEIGHT .  $products_weight . TEXT_PRODUCT_WEIGHT_UNIT . '</li>'  : '') . "\n"; ?>
+  <?php echo (($flag_show_product_info_quantity == 1) ? '<li>' . $products_quantity . TEXT_PRODUCT_QUANTITY . '</li>'  : '') . "\n"; ?>
+  <?php echo (($flag_show_product_info_manufacturer == 1 and !empty($manufacturers_name)) ? '<li>' . TEXT_PRODUCT_MANUFACTURER . $manufacturers_name . '</li>' : '') . "\n"; ?>
+</ul>
+<?php
+  }
+?>
+<!--eof Product details list -->
+
+<!--bof free ship icon  -->
+<?php if(zen_get_product_is_always_free_shipping($products_id_current) && $flag_show_product_info_free_shipping) { ?>
+<div id="freeShippingIcon"><?php echo TEXT_PRODUCT_FREE_SHIPPING_ICON; ?></div>
+<?php } ?>
+<!--eof free ship icon  -->
+</div>
+
+<div id="cart-box" class="grids">
 <h2 id="productPrices" class="productGeneral">
 <?php
 // base price
@@ -79,67 +111,6 @@ require($template->get_template_dir('/tpl_products_next_previous.php',DIR_WS_TEM
 ?></h2>
 <!--eof Product Price block -->
 
-<!--bof free ship icon  -->
-<?php if(zen_get_product_is_always_free_shipping($products_id_current) && $flag_show_product_info_free_shipping) { ?>
-<div id="freeShippingIcon"><?php echo TEXT_PRODUCT_FREE_SHIPPING_ICON; ?></div>
-<?php } ?>
-<!--eof free ship icon  -->
-
-<?php 
-//BOF :: Tabbed Products Pro ::
-echo '<div id="tpptabBlock" style="display:none;">' . $tabData . '</div>';
-//EOF :: Tabbed Products Pro ::
-?>
-
- <!--bof Product description -->
-<?php if ($products_description != '') { ?>
-<div id="productDescription" class="productGeneral biggerText"><?php echo stripslashes($products_description); ?></div>
-<?php } ?>
-<!--eof Product description -->
-<br class="clearBoth" />
-
-<!--bof Add to Cart Box -->
-<?php
-if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
-  // do nothing
-} else {
-?>
-            <?php
-    $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
-            if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
-              // hide the quantity box and default to 1
-              $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-            } else {
-              // show the quantity box
-    $the_button = PRODUCTS_ORDER_QTY_TEXT . '<input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" /><br />' . zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . '<br />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
-            }
-    $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
-  ?>
-  <?php if ($display_qty != '' or $display_button != '') { ?>
-    <div id="cartAdd">
-    <?php
-      echo $display_qty;
-      echo $display_button;
-            ?>
-          </div>
-  <?php } // display qty and button ?>
-<?php } // CUSTOMERS_APPROVAL == 3 ?>
-<!--eof Add to Cart Box-->
-
-<!--bof Product details list  -->
-<?php if ( (($flag_show_product_info_model == 1 and $products_model != '') or ($flag_show_product_info_weight == 1 and $products_weight !=0) or ($flag_show_product_info_quantity == 1) or ($flag_show_product_info_manufacturer == 1 and !empty($manufacturers_name))) ) { ?>
-<ul id="productDetailsList" class="floatingBox back">
-  <?php echo (($flag_show_product_info_model == 1 and $products_model !='') ? '<li>' . TEXT_PRODUCT_MODEL . $products_model . '</li>' : '') . "\n"; ?>
-  <?php echo (($flag_show_product_info_weight == 1 and $products_weight !=0) ? '<li>' . TEXT_PRODUCT_WEIGHT .  $products_weight . TEXT_PRODUCT_WEIGHT_UNIT . '</li>'  : '') . "\n"; ?>
-  <?php echo (($flag_show_product_info_quantity == 1) ? '<li>' . $products_quantity . TEXT_PRODUCT_QUANTITY . '</li>'  : '') . "\n"; ?>
-  <?php echo (($flag_show_product_info_manufacturer == 1 and !empty($manufacturers_name)) ? '<li>' . TEXT_PRODUCT_MANUFACTURER . $manufacturers_name . '</li>' : '') . "\n"; ?>
-</ul>
-<br class="clearBoth" />
-<?php
-  }
-?>
-<!--eof Product details list -->
-
 <!--bof Attributes Module -->
 <?php
   if ($pr_attr->fields['total'] > 0) {
@@ -148,7 +119,9 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 /**
  * display the product atributes
  */
-  require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_attributes.php'); ?>
+      if ($bAttribsOnTab != true && $bAttribsOnATCTab != false) {
+  require($template->get_template_dir('/tpl_modules_attributes.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_attributes.php');
+      }?>
 <?php
   }
 ?>
@@ -167,13 +140,47 @@ if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == 
 ?>
 <!--eof Quantity Discounts table -->
 
-<!--bof Additional Product Images -->
+<!--bof Add to Cart Box -->
 <?php
-/**
- * display the products additional images
- */
-  require($template->get_template_dir('/tpl_modules_additional_images.php',DIR_WS_TEMPLATE, $current_page_base,'templates'). '/tpl_modules_additional_images.php'); ?>
-<!--eof Additional Product Images -->
+if (CUSTOMERS_APPROVAL == 3 and TEXT_LOGIN_FOR_PRICE_BUTTON_REPLACE_SHOWROOM == '') {
+  // do nothing
+} else {
+?>
+<?php
+    $display_qty = (($flag_show_product_info_in_cart_qty == 1 and $_SESSION['cart']->in_cart($_GET['products_id'])) ? '<p>' . PRODUCTS_ORDER_QTY_TEXT_IN_CART . $_SESSION['cart']->get_quantity($_GET['products_id']) . '</p>' : '');
+    if ($products_qty_box_status == 0 or $products_quantity_order_max== 1) {
+      // hide the quantity box and default to 1
+      $the_button = '<input type="hidden" name="cart_quantity" value="1" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+    } else {
+      // show the quantity box
+      $the_button = '<div class="max-qty">' . zen_get_products_quantity_min_units_display((int)$_GET['products_id']) . '</div><span class="qty-text">' . PRODUCTS_ORDER_QTY_TEXT . '</span><input type="text" name="cart_quantity" value="' . (zen_get_buy_now_qty($_GET['products_id'])) . '" maxlength="6" size="4" />' . zen_draw_hidden_field('products_id', (int)$_GET['products_id']) . zen_image_submit(BUTTON_IMAGE_IN_CART, BUTTON_IN_CART_ALT);
+    }
+    $display_button = zen_get_buy_now_button($_GET['products_id'], $the_button);
+?>
+<?php if ($display_qty != '' or $display_button != '') { ?>
+    <div id="cartAdd">
+    <?php
+      echo $display_qty;
+      echo $display_button;
+?>
+          </div>
+<?php   } // display qty and button ?>
+<?php } // CUSTOMERS_APPROVAL == 3 ?>
+<!--eof Add to Cart Box-->
+</div>
+</div>
+
+<?php 
+//BOF :: Tabbed Products Pro ::
+echo $tabData;
+//EOF :: Tabbed Products Pro ::
+?>
+
+<!--bof Product description -->
+<?php if ($products_description != '') { ?>
+<div id="productDescription" class="productGeneral biggerText"><?php echo stripslashes($products_description); ?></div>
+<?php } ?>
+<!--eof Product description -->
 
 <!--bof Prev/Next bottom position -->
 <?php if (PRODUCT_INFO_PREVIOUS_NEXT == 2 or PRODUCT_INFO_PREVIOUS_NEXT == 3) { ?>
